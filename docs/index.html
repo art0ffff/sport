@@ -1,92 +1,138 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f7f8f4">
-  <title>SportsMap Краснодар</title>
-  <meta name="description" content="Публичная карта спортивных площадок Краснодара.">
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="manifest" href="manifest.webmanifest">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-  <link rel="stylesheet" href="assets/site.css">
-  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
-  <script src="assets/site.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0f766e">
+    <title>SportsMap Краснодар — спортивные площадки и встречи</title>
+    <meta name="description" content="SportsMap помогает находить спортивные площадки Краснодара и планировать встречи.">
+    <link rel="stylesheet" href="assets/home.css">
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 </head>
-<body>
-  <div class="app-shell">
-    <header class="topbar">
-      <a class="brand" href="./" aria-label="SportsMap Краснодар">
-        <span class="brand-mark">SM</span>
-        <span>
-          <strong>SportsMap</strong>
-          <small>Краснодар</small>
-        </span>
-      </a>
-      <div class="topbar-actions">
-        <span class="mode-pill">Публичная карта</span>
-        <a class="source-link" href="https://github.com/" target="_blank" rel="noreferrer">
-          <i data-lucide="github" aria-hidden="true"></i>
-          GitHub
-        </a>
-      </div>
+<body class="page">
+    <header class="nav">
+        <div class="container nav-inner">
+            <a class="brand" href="./">SportsMap<span>Краснодар</span></a>
+            <nav class="nav-links">
+                <a href="#features">Возможности</a>
+                <a href="#stats">География</a>
+                <a href="map.html" class="btn btn-ghost">Открыть карту</a>
+            </nav>
+        </div>
     </header>
 
-    <main class="map-layout">
-      <aside class="side-panel" aria-label="Фильтры и список площадок">
-        <section class="controls-section" aria-label="Фильтры">
-          <label class="field-label" for="searchInput">Поиск</label>
-          <div class="search-field">
-            <i data-lucide="search" aria-hidden="true"></i>
-            <input id="searchInput" type="search" placeholder="Название или район">
-          </div>
-
-          <label class="field-label" for="districtSelect">Район</label>
-          <select id="districtSelect"></select>
-
-          <div class="field-label">Спорт</div>
-          <div class="sport-tabs" id="sportTabs" role="tablist" aria-label="Вид спорта"></div>
-
-          <button class="reset-button" id="resetButton" type="button">
-            <i data-lucide="rotate-ccw" aria-hidden="true"></i>
-            Сбросить
-          </button>
+    <main>
+        <section class="hero">
+            <div class="container hero-grid">
+                <div class="hero-copy">
+                    <p class="eyebrow">Спорт ближе, чем кажется</p>
+                    <h1>Найдите площадку и собирайте встречи без лишней суеты</h1>
+                    <p class="lead">SportsMap помогает быстро выбирать спортивные локации, фильтровать по району и виду спорта и управлять встречами в одном месте.</p>
+                    <div class="hero-actions">
+                        <a class="btn btn-primary" href="map.html">Открыть карту</a>
+                        <a class="btn btn-light" href="#features">Посмотреть возможности</a>
+                    </div>
+                    <div class="hero-badges">
+                        <span class="chip">Карта по районам</span>
+                        <span class="chip">Планирование встреч</span>
+                        <span class="chip">Фильтры по спорту</span>
+                    </div>
+                </div>
+                <div class="hero-card">
+                    <div class="hero-card-top">
+                        <h3>Быстрый старт</h3>
+                        <p>Три шага до первой встречи</p>
+                    </div>
+                    <ol class="steps">
+                        <li>
+                            <span class="step-count">1</span>
+                            <div>
+                                <strong>Выберите район</strong>
+                                <p>Сразу увидите доступные площадки поблизости.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="step-count">2</span>
+                            <div>
+                                <strong>Уточните спорт</strong>
+                                <p>Футбол, баскетбол, скейт или тренажеры.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="step-count">3</span>
+                            <div>
+                                <strong>Откройте маршрут</strong>
+                                <p>Постройте дорогу к выбранной площадке на карте.</p>
+                            </div>
+                        </li>
+                    </ol>
+                </div>
+            </div>
         </section>
 
-        <section class="stats-strip" aria-label="Статистика">
-          <div>
-            <strong id="shownCount">0</strong>
-            <span>показано</span>
-          </div>
-          <div>
-            <strong id="districtCount">0</strong>
-            <span>района</span>
-          </div>
-          <div>
-            <strong id="sportCount">0</strong>
-            <span>вида спорта</span>
-          </div>
+        <section id="stats" class="stats">
+            <div class="container stats-grid">
+                <div class="stat">
+                    <h3>4 района</h3>
+                    <p>Вся география города — в одном интерфейсе.</p>
+                </div>
+                <div class="stat">
+                    <h3>20+ площадок</h3>
+                    <p>Собраны актуальные спортивные локации.</p>
+                </div>
+                <div class="stat">
+                    <h3>1 карта</h3>
+                    <p>Фильтры, координаты и маршруты доступны прямо в браузере.</p>
+                </div>
+            </div>
         </section>
 
-        <section class="location-list-section" aria-label="Список площадок">
-          <div class="list-head">
-            <h1>Спортивные площадки</h1>
-            <span id="listHint"></span>
-          </div>
-          <div class="location-list" id="locationList"></div>
+        <section id="features" class="features">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Что внутри</h2>
+                    <p>Понятный интерфейс, чтобы вы фокусировались на спорте.</p>
+                </div>
+                <div class="feature-grid">
+                    <article class="feature-card">
+                        <h3>Интерактивная карта</h3>
+                        <p>Локации отображаются на карте с моментальным масштабированием.</p>
+                    </article>
+                    <article class="feature-card">
+                        <h3>Фильтры по интересам</h3>
+                        <p>Сортируйте площадки по району и типу спорта, чтобы быстро найти лучшее.</p>
+                    </article>
+                    <article class="feature-card">
+                        <h3>Маршруты</h3>
+                        <p>Открывайте путь до выбранной площадки через привычные карты.</p>
+                    </article>
+                </div>
+            </div>
         </section>
-      </aside>
 
-      <section class="map-stage" aria-label="Карта спортивных площадок">
-        <div id="map" class="map"></div>
-        <article class="detail-panel" id="detailPanel" aria-live="polite"></article>
-      </section>
+        <section id="cta" class="cta">
+            <div class="container cta-inner">
+                <div>
+                    <h2>Готовы к следующей игре?</h2>
+                    <p>Откройте карту и выберите площадку уже сегодня.</p>
+                </div>
+                <div class="cta-actions">
+                    <a class="btn btn-primary" href="map.html">Открыть карту</a>
+                    <a class="btn btn-light" href="#stats">География</a>
+                </div>
+            </div>
+        </section>
     </main>
-  </div>
 
-  <noscript>
-    <div class="noscript">Для карты нужен включенный JavaScript.</div>
-  </noscript>
+    <footer class="footer">
+        <div class="container footer-inner">
+            <p>© 2026 SportsMap Краснодар. Все права защищены.</p>
+            <span>Площадка для спортивных встреч</span>
+        </div>
+    </footer>
 </body>
 </html>

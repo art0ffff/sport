@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f8f4">
+  <title>SportsMap Краснодар — карта площадок</title>
+  <meta name="description" content="Публичная карта спортивных площадок Краснодара.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="assets/site.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
+  <script src="assets/site.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="./" aria-label="SportsMap Краснодар">
+        <span class="brand-mark">SM</span>
+        <span>
+          <strong>SportsMap</strong>
+          <small>Краснодар</small>
+        </span>
+      </a>
+      <div class="topbar-actions">
+        <a class="source-link" href="./">Главная</a><span class="mode-pill">Публичная карта</span>
+        <a class="source-link" href="https://github.com/art0ffff/sport" target="_blank" rel="noreferrer">
+          <i data-lucide="github" aria-hidden="true"></i>
+          GitHub
+        </a>
+      </div>
+    </header>
+
+    <main class="map-layout">
+      <aside class="side-panel" aria-label="Фильтры и список площадок">
+        <section class="controls-section" aria-label="Фильтры">
+          <label class="field-label" for="searchInput">Поиск</label>
+          <div class="search-field">
+            <i data-lucide="search" aria-hidden="true"></i>
+            <input id="searchInput" type="search" placeholder="Название или район">
+          </div>
+
+          <label class="field-label" for="districtSelect">Район</label>
+          <select id="districtSelect"></select>
+
+          <div class="field-label">Спорт</div>
+          <div class="sport-tabs" id="sportTabs" role="tablist" aria-label="Вид спорта"></div>
+
+          <button class="reset-button" id="resetButton" type="button">
+            <i data-lucide="rotate-ccw" aria-hidden="true"></i>
+            Сбросить
+          </button>
+        </section>
+
+        <section class="stats-strip" aria-label="Статистика">
+          <div>
+            <strong id="shownCount">0</strong>
+            <span>показано</span>
+          </div>
+          <div>
+            <strong id="districtCount">0</strong>
+            <span>района</span>
+          </div>
+          <div>
+            <strong id="sportCount">0</strong>
+            <span>вида спорта</span>
+          </div>
+        </section>
+
+        <section class="location-list-section" aria-label="Список площадок">
+          <div class="list-head">
+            <h1>Спортивные площадки</h1>
+            <span id="listHint"></span>
+          </div>
+          <div class="location-list" id="locationList"></div>
+        </section>
+      </aside>
+
+      <section class="map-stage" aria-label="Карта спортивных площадок">
+        <div id="map" class="map"></div>
+        <article class="detail-panel" id="detailPanel" aria-live="polite"></article>
+      </section>
+    </main>
+  </div>
+
+  <noscript>
+    <div class="noscript">Для карты нужен включенный JavaScript.</div>
+  </noscript>
+</body>
+</html>

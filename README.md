@@ -1,29 +1,30 @@
 # SportsMap Краснодар
 
-Публичная карта спортивных площадок Краснодара для GitHub Pages.
+Публичная версия SportsMap для GitHub Pages.
 
 ## Что опубликовано
 
-GitHub Pages умеет отдавать только статические HTML/CSS/JS-файлы. Поэтому здесь
-лежит публичная версия карты без Python-сервера, аккаунтов, встреч, чатов и
-SQLite. Полная Flask-версия остается локально в рабочей папке проекта.
+GitHub Pages умеет отдавать только статические HTML/CSS/JS-файлы. Поэтому на
+адресе Pages опубликована статическая версия: главная страница повторяет стиль
+исходного Flask-сайта, а карта вынесена в отдельную страницу.
 
 Статический сайт лежит в `docs/`:
 
-- `docs/index.html` - страница карты
-- `docs/assets/site.css` - стили
+- `docs/index.html` - главная страница в стиле исходного сайта
+- `docs/map.html` - публичная интерактивная карта
+- `docs/assets/home.css` - стили главной страницы
+- `docs/assets/site.css` - стили карты
 - `docs/assets/site.js` - фильтры, список площадок и Leaflet-карта
 - `docs/manifest.webmanifest` - manifest для браузера
 
-## Как включить сайт для всех
+## Важно
 
-1. Откройте репозиторий: https://github.com/art0ffff/sport
-2. Перейдите в `Settings` -> `Pages`.
-3. В `Build and deployment` выберите `Source` -> `Deploy from a branch`.
-4. Выберите `Branch` -> `main` и папку `/docs`.
-5. Нажмите `Save`.
+Полная Flask-версия с аккаунтами, встречами, чатами, модерацией и SQLite не
+может работать на GitHub Pages, потому что GitHub Pages не запускает Python-
+сервер. Для полной версии нужен backend-хостинг, например Render, Railway,
+PythonAnywhere или VPS. GitHub в таком варианте остается репозиторием кода.
 
-После публикации сайт будет здесь:
+## Ссылка
 
 ```text
 https://art0ffff.github.io/sport/
